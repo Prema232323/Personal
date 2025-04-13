@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animated I LOVE YOU</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      background-color: black;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .text {
+      font-size: 50px;
+      font-weight: bold;
+      color: red;
+      text-shadow: 0 0 10px white;
+      opacity: 0;
+      animation: fadeIn 3s infinite alternate;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .play-button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      background-color: white;
+      color: red;
+      cursor: pointer;
+      box-shadow: 0 0 10px red;
+      display: none;
+    }
+
+    .play-button:hover {
+      background-color: red;
+      color: white;
+      box-shadow: 0 0 20px white;
+    }
+  </style>
+</head>
+<body>
+  <div class="text">I LOVE YOU ANGGELINA</div>
+
+  <!-- Tombol Play Music -->
+  <button id="playBtn" class="play-button">Play Music 🎵</button>
+
+  <!-- Pemutar Musik -->
+  <audio id="loveSong" autoplay loop>
+    <source src="Waking Up Together With You.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const audio = document.getElementById("loveSong");
+    const playBtn = document.getElementById("playBtn");
+
+    // Coba mainkan otomatis saat halaman dimuat
+    window.addEventListener("load", () => {
+      audio.play().catch(() => {
+        // Kalau autoplay gagal, tampilkan tombol
+        playBtn.style.display = "inline-block";
+      });
+    });
+
+    // Jika tombol diklik, mainkan audio dan sembunyikan tombol
+    playBtn.addEventListener("click", () => {
+      audio.play();
+      playBtn.style.display = "none";
+    });
+  </script>
+</body>
+</html>
